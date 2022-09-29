@@ -5,24 +5,27 @@ import styles from './NavBar.module.css';
 export default function NavBar() {
   const router = useRouter();
   return (
-    <div>
+    <nav>
       <Link href='/'>
-        <a
-          className={`${router.pathname === '/' ? styles.active : ''} ${
-            styles.link
-          }`}>
-          Home
-        </a>
+        <a className={router.pathname === '/' ? 'active' : ''}>Home</a>
       </Link>
       <Link href='/about'>
-        <a
-          className={[
-            styles.link,
-            router.pathname === '/about' ? styles.active : '',
-          ].join(' ')}>
-          About
-        </a>
+        <a className={router.pathname === '/about' ? 'active' : ''}>About</a>
       </Link>
-    </div>
+      <style jsx>{`
+        nav {
+          background-color: honeydew;
+        }
+
+        a {'
+          text-decoration: none;
+        }
+
+        .active {
+          color: indigo;
+          font-weight: 600;
+        }
+      `}</style>
+    </nav>
   );
 }

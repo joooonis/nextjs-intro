@@ -5,7 +5,7 @@ import Seo from '../component/Seo';
 const API_KEY = '51a50e1e798cc339aa2a5af32624c0f9';
 
 export default function Home() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState();
 
   useEffect(() => {
     (async () => {
@@ -20,7 +20,8 @@ export default function Home() {
   return (
     <div>
       <Seo title='Home' />
-      {movies.map((movie) => (
+      {!movies && <h4>Loading...</h4>}
+      {movies?.map((movie) => (
         <div key={movie.id}>
           <h4>{movie.original_title}</h4>
         </div>

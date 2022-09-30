@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 export default function NavBar() {
   const router = useRouter();
   return (
     <nav>
-      <img src='/vercel.svg' />
+      <Image src='/vercel.svg' alt='vercel' width={100} height={100} />
       <div>
         <Link href='/'>
           <a className={router.pathname === '/' ? 'active' : ''}>Home</a>

@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Seo from '../component/Seo';
 
@@ -9,11 +11,16 @@ export default function Home({ results }) {
     <div className='container'>
       <Seo title='Home' />
       {results?.map((movie) => (
-        <div className='movie' key={movie.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
-          <h4>{movie.original_title}</h4>
-        </div>
+        <Link key={movie.id} href={`/movies/${movie.id}`}>
+          <a>
+            <div className='movie'>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              />
+              <h4>{movie.original_title}</h4>
+            </div>
+          </a>
+        </Link>
       ))}
       <style jsx>{`
         .container {
